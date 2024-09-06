@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: ./sveltekit-example-app/
+      target: ${SVELTEKIT_TARGET}
+    ports:
+      - "127.0.0.1:5173:5173"
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./sveltekit-example-app/src/:/app/src/
+
+  pocketbase:
+    build: ./pocketbase/
+    ports:
+      - "127.0.0.1:8090:8090"
